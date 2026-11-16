@@ -1,0 +1,63 @@
+# services:
+#   frontend:
+#     image: node:22
+#     container_name: ubika-frontend-casa
+#     user: ${UID}:${GID}
+#     tty: true
+#     stdin_open: true
+#     working_dir: /app/Ubika
+#     volumes:
+#       - /etc/passwd:/etc/passwd:ro
+#       - /etc/group:/etc/group:ro
+#       - ./Ubika:/app/Ubika
+#     ports:
+#       - "19000:19000"
+#       - "19001:19001"
+#       - "19002:19002"
+#       - "19006:19006"
+#     environment:
+#       EXPO_DEVTOOLS_LISTEN_ADDRESS: 0.0.0.0
+#       NPM_CONFIG_CACHE: /app/Ubika/.npm
+#       XDG_CONFIG_HOME: /app/Ubika/.config
+#       HOME: /app/Ubika
+#       EXPO_NO_ANDROID_STUDIO: "1"
+#       ANDROID_HOME: ""
+#     command: >
+#       sh -c "
+#       rm -rf node_modules &&
+#       npm install --legacy-peer-deps &&
+#       npx expo start --clear --lan
+#       "
+
+
+services:
+  frontend:
+    image: node:22
+    container_name: ubika-frontend-casa
+    user: ${UID}:${GID}
+    tty: true
+    stdin_open: true
+    working_dir: /app/Ubika
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - ./Ubika:/app/Ubika
+    ports:
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
+      - "19006:19006"
+    environment:
+      EXPO_DEVTOOLS_LISTEN_ADDRESS: 0.0.0.0
+      REACT_NATIVE_PACKAGER_HOSTNAME: 10.200.243.207
+      NPM_CONFIG_CACHE: /app/Ubika/.npm
+      XDG_CONFIG_HOME: /app/Ubika/.config
+      HOME: /app/Ubika
+      EXPO_NO_ANDROID_STUDIO: "1"
+      ANDROID_HOME: ""
+    command: >
+      sh -c "
+      rm -rf node_modules &&
+      npm install --legacy-peer-deps &&
+      npx expo start --clear --lan
+      "
